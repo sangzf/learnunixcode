@@ -1,0 +1,13 @@
+getf (f)
+{
+	register *fp, rf;
+	rf = f;
+	if (rf < 0 || rf >= NOFILE)
+		goto bad;
+	fp = u.u_ofile[rf];
+	if (fp != NULL)
+	return (fp);
+bad:
+	u.u_error = EBADF;
+	return (NULL);
+}
